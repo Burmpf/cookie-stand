@@ -1,141 +1,113 @@
 'use strict'
 
-let seattleList = document.getElementById('seattleList');
+// let seattleList = document.getElementById('seattleList');
 
-console.log(seattleList);
+// console.log(seattleList);
 
+
+// let seattle = {
+    //     name: 'Seattle',
+    //     min: 23,
+    //     max: 65,
+    //     avg: 6.3,
+    //     dailyTotal: 0,
+    //     cookiesSoldEachHourArray: [],
+    //     getRandomCustomers: function () {
+        //         return Math.floor(Math.random() * (this.max - this.min + 1) + this.min); // The maximum is inclusive and the minimum is inclusive
+        //     },
+//     calcHourlySales: function () {
+    //         for (let i = 0; i < hours.length; i++) {
+        //             let randNum = this.getRandomCustomers();
+        //             let cookiesSoldThisHour = Math.ceil(this.avg * randNum);
+        //             this.cookiesSoldEachHourArray.push(cookiesSoldThisHour);
+        //             this.dailyTotal += cookiesSoldThisHour;
+        //         }
+        //     },
+        //    renderList: function () {
+            //         this.calcHourlySales();
+            //         for (let i = 0; i < hours.length; i++) {
+                //             let listItemSea = document.createElement('li');
+                //             listItemSea.textContent = `${hours[i]}: ${this.cookiesSoldEachHourArray[i]} cookies`;
+                //             seattleList.appendChild(listItemSea);
+                //         }
+                //         let totalLi = document.createElement('li');
+                //         totalLi.textContent = `Total: ${this.dailyTotal}`;
+                //         seattleList.appendChild(totalLi);
+                //     }
+                // }
+                // seattle.renderList();
 let hours = ['6 a.m', '7 a.m', '8 a.m', '9 a.m', '10 a.m', '11 a.m', '12 p.m', '1 p.m', '2 p.m', '3 p.m', '4 p.m', '5 p.m', '6 p.m', '7 p.m'];
+const locationTable = document.getElementById('table')
+console.log(locationTable)
+const locationBody = document.createElement('tbody');
+locationTable.appendChild(locationBody);
 
-let seattle = {
-    name: 'Seattle',
-    min: 23,
-    max: 65,
-    avg: 6.3,
-    dailyTotal: 0,
-    cookiesSoldEachHourArray: [],
-    getRandomCustomers: function () {
-        return Math.floor(Math.random() * (this.max - this.min + 1) + this.min); // The maximum is inclusive and the minimum is inclusive
-    },
-    render: function () {
-        for (let i = 0; i < hours.length; i++) {
-            let li = document.createElement('li');
-            let avgBuyseattle = Math.floor(this.getRandomCustomers() * this.avg);
-            let message = hours[i] + ': ' + avgBuyseattle + 'cookies';
-            li.textContent = message;
-            seattleList.appendChild(li)
-        }
-    }
+function Location(name, min, max, avg) {
+    this.name = name,
+    this.min = min,
+    this.max = max,
+    this.avg = avg,
+    this.dailyTotal = 0,
+    this.cookiesSoldEachHourArray=[]
+    
 }
-seattle.render()
-console.log(seattle.getRandomCustomers());
-
-
-let tokyoList = document.getElementById('tokyoList');
-
-let tokyo = {
-    name: 'Tokyo',
-    min: 3,
-    max: 24,
-    avg: 1.2,
-    dailyTotal: 0,
-    cookiesSoldEachHourArray: [],
-    getRandomCustomers: function () {
-        return Math.floor(Math.random() * (this.max - this.min + 1) + this.min); // The maximum is inclusive and the minimum is inclusive
-    },
-    render: function () {
-        for (let i = 0; i < hours.length; i++) {
-            let li = document.createElement('li');
-            let avgBuytokyo = Math.floor(this.getRandomCustomers() * this.avg);
-            let message = hours[i] + ': ' + avgBuytokyo + 'cookies';
-            li.textContent = message;
-            tokyoList.appendChild(li)
-        }
-    }
+Location.prototype.getRandomCustomers = function () {
+    return Math.floor(Math.random() * (this.max - this.min + 1) + this.min); // The maximum is inclusive and the minimum is inclusive
 }
-tokyo.render()
-console.log(tokyo.getRandomCustomers());
 
-
-
-let dubaiList = document.getElementById('dubaiList');
-
-let dubai = {
-    name: 'Dubai',
-    min: 11,
-    max: 38,
-    avg: 3.7,
-    dailyTotal: 0,
-    cookiesSoldEachHourArray: [],
-    getRandomCustomers: function () {
-        return Math.floor(Math.random() * (this.max - this.min + 1) + this.min); // The maximum is inclusive and the minimum is inclusive
-    },
-    render: function () {
-        for (let i = 0; i < hours.length; i++) {
-            let li = document.createElement('li');
-            let avgBuydubai = Math.floor(this.getRandomCustomers() * this.avg);
-            let message = hours[i] + ': ' + avgBuydubai + 'cookies';
-            li.textContent = message;
-            dubaiList.appendChild(li)
-        }
+Location.prototype.calcHourlySales = function () {
+    for (let i = 0; i < hours.length; i++) {
+        let randNum = this.getRandomCustomers();
+        let cookiesSoldThisHour = Math.ceil(this.avg * randNum);
+        this.cookiesSoldEachHourArray.push(cookiesSoldThisHour);
+        this.dailyTotal += cookiesSoldThisHour;
     }
+    
 }
-dubai.render()
-console.log(dubai.getRandomCustomers());
 
+function createTableHeader(){
+    let headerRow = document.createElement('tr');
+    let tableHeader = document.createElement('th');
+    tableHeader.textContent = 'hours';
+    headerRow.appendChild(tableHeader);
+    locationTable.appendChild(headerRow);
+    for (let i =0; i< hours.length; i++){
+        let tableElem = document.createElement('th')
+        //tableHeader = document.createElement('th');
+        tableElem.textContent = hours[i];
+        headerRow.appendChild(tableElem);
 
-
-
-let parisList = document.getElementById('parisList');
-
-let paris = {
-    name: 'Paris',
-    min: 20,
-    max: 38,
-    avg: 2.3,
-    dailyTotal: 0,
-    cookiesSoldEachHourArray: [],
-    getRandomCustomers: function () {
-        return Math.floor(Math.random() * (this.max - this.min + 1) + this.min); // The maximum is inclusive and the minimum is inclusive
-    },
-    render: function () {
-        for (let i = 0; i < hours.length; i++) {
-            let li = document.createElement('li');
-            let avgBuyparis = Math.floor(this.getRandomCustomers() * this.avg);
-            let message = hours[i] + ': ' + avgBuyparis + 'cookies';
-            li.textContent = message;
-            parisList.appendChild(li)
-        }
     }
+
 }
-paris.render()
-console.log(paris.getRandomCustomers());
-
-
-
-
-
-
-let limaList = document.getElementById('limaList');
-
-let lima = {
-    name: 'Lima',
-    min: 2,
-    max: 16,
-    avg: 4.6,
-    dailyTotal: 0,
-    cookiesSoldEachHourArray: [],
-    getRandomCustomers: function () {
-        return Math.floor(Math.random() * (this.max - this.min + 1) + this.min); // The maximum is inclusive and the minimum is inclusive
-    },
-    render: function () {
-        for (let i = 0; i < hours.length; i++) {
-            let li = document.createElement('li');
-            let avgBuylima = Math.floor(this.getRandomCustomers() * this.avg);
-            let message = hours[i] + ': ' + avgBuylima + 'cookies';
-            li.textContent = message;
-            limaList.appendChild(li)
-        }
+Location.prototype.renderTable = function() {
+    this.calcHourlySales();
+    let tr = document.createElement('tr');
+    locationTable.appendChild(tr);
+    let locationName = document.createElement('td');
+    locationName.textContent = this.name;
+    tr.appendChild(locationName);
+    for (let i = 0; i < hours.length; i++) {
+        let td = document.createElement('td');
+        td.textContent = this.cookiesSoldEachHourArray[i];
+        tr.appendChild(td);
     }
+    
 }
-lima.render()
-console.log(lima.getRandomCustomers());
+createTableHeader();
+let seattle = new Location('Seattle', 23, 65, 6.3); 
+seattle.renderTable();
+let tokyo = new Location('Tokyo', 3, 24, 1.2);
+tokyo.renderTable();
+let dubai = new Location('Dubai', 11, 38, 3.7);
+dubai.renderTable();
+let paris = new Location('Paris', 20, 38, 2.3);
+paris.renderTable();
+let lima = new Location('Lima', 2, 16, 4.6);
+lima.renderTable();
+
+function createTableFooter(){
+    let footerRow = document.createElement('tr');
+    let tableFooter = document.createElement('td');
+
+}
