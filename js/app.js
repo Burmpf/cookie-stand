@@ -64,21 +64,22 @@ Location.prototype.calcHourlySales = function () {
     }
     
 }
-
+ //Create table header
 function createTableHeader(){
     let headerRow = document.createElement('tr');
     let tableHeader = document.createElement('th');
-    tableHeader.textContent = 'hours';
+    tableHeader.textContent = '';
     headerRow.appendChild(tableHeader);
     locationTable.appendChild(headerRow);
     for (let i =0; i< hours.length; i++){
         let tableElem = document.createElement('th')
-        //tableHeader = document.createElement('th');
         tableElem.textContent = hours[i];
         headerRow.appendChild(tableElem);
-
     }
-
+    
+    // let dayTotal = document.createElement('th');
+    // headerRow.appendChild(dayTotal);
+    // dayTotal.textContent = this.dailyTotal;
 }
 Location.prototype.renderTable = function() {
     this.calcHourlySales();
@@ -106,8 +107,8 @@ paris.renderTable();
 let lima = new Location('Lima', 2, 16, 4.6);
 lima.renderTable();
 
-function createTableFooter(){
-    let footerRow = document.createElement('tr');
-    let tableFooter = document.createElement('td');
+// function createTableFooter(){
+//     let footerRow = document.createElement('tr');
+//     let tableFooter = document.createElement('td');
 
-}
+// }
