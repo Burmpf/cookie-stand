@@ -92,9 +92,9 @@ Location.prototype.renderTable = function() {
         tr.appendChild(td);
     }
     
-    // let dayTotal = document.createElement('th');
-    // headerRow.appendChild(dayTotal);
-    // dayTotal.textContent = this.dailyTotal;
+    let dayTotal = document.createElement('td');
+    headerRow.appendChild(dayTotal);
+    dayTotal.textContent = this.dailyTotal;
 }
 
 
@@ -104,9 +104,7 @@ Location.prototype.createLocalTotals = function() {
 let totalsCol = document.createElement('td');
 locationTable.appendChild(totalsCol);
 totalsCol.textContent = ''
-
 }
-
 
 
 
