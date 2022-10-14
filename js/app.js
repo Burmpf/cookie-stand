@@ -51,10 +51,11 @@ function Location(name, min, max, avg) {
     this.cookiesSoldEachHourArray=[]
     
 }
+// RANDOM NUMBER GENERATION
 Location.prototype.getRandomCustomers = function () {
     return Math.floor(Math.random() * (this.max - this.min + 1) + this.min); // The maximum is inclusive and the minimum is inclusive
 }
-
+// CREATE THE TOTAL SOLD IN AN HOUR ( random number * avg sold per hour)
 Location.prototype.calcHourlySales = function () {
     for (let i = 0; i < hours.length; i++) {
         let randNum = this.getRandomCustomers();
@@ -66,20 +67,17 @@ Location.prototype.calcHourlySales = function () {
 }
  //Create table header
 function createTableHeader(){
-    let headerRow = document.createElement('tr');
-    let tableHeader = document.createElement('th');
-    tableHeader.textContent = '';
+    let headerRow = document.createElement('tr');     //creates the row
+    let tableHeader = document.createElement('th');    //creates the cells in the row
+    tableHeader.textContent = '';                       //the first cell so that it is empty
     headerRow.appendChild(tableHeader);
-    locationTable.appendChild(headerRow);
+    locationTable.appendChild(headerRow);      // locationTable is the table element from HTML
     for (let i =0; i< hours.length; i++){
         let tableElem = document.createElement('th')
         tableElem.textContent = hours[i];
         headerRow.appendChild(tableElem);
     }
     
-    // let dayTotal = document.createElement('th');
-    // headerRow.appendChild(dayTotal);
-    // dayTotal.textContent = this.dailyTotal;
 }
 Location.prototype.renderTable = function() {
     this.calcHourlySales();
@@ -94,8 +92,32 @@ Location.prototype.renderTable = function() {
         tr.appendChild(td);
     }
     
+    // let dayTotal = document.createElement('th');
+    // headerRow.appendChild(dayTotal);
+    // dayTotal.textContent = this.dailyTotal;
 }
+
+
+// attempt at making totals
+
+Location.prototype.createLocalTotals = function() {
+let totalsCol = document.createElement('td');
+locationTable.appendChild(totalsCol);
+totalsCol.textContent = ''
+
+}
+
+
+
+
+
+
+
+
+
+
 createTableHeader();
+
 let seattle = new Location('Seattle', 23, 65, 6.3); 
 seattle.renderTable();
 let tokyo = new Location('Tokyo', 3, 24, 1.2);
@@ -112,3 +134,25 @@ lima.renderTable();
 //     let tableFooter = document.createElement('td');
 
 // }
+
+
+let form = document.querySelector('form');
+console.log(form);
+
+let handleSubmit = function(event) {
+    event.preventDefault();
+    console.log('The Form is Submitted.')
+
+    console.log(event.target.nameCity.value);
+
+    let name = event.target.nameCity.value;
+    let max = event.target.cityMax.value;
+    let min = event.target.cityMin.value;
+    let avg = event.target.cityAvg.value;
+// NAME, MIN, MAX, AVG
+    let newCity = new Location(name, min, max, avg);
+    console.log(newCity)
+    newCity.renderTable();
+}
+
+form.addEventListener('submit', handleSubmit);
