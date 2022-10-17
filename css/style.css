@@ -1,9 +1,40 @@
+body{
+    text-align: center;
+    align-items: center;
+}
+header nav{
+    margin-bottom: 50px;
+}
+header nav a{
+    text-decoration: none;
+}
+header nav a:visited{
+    
+    color: white;
+}
+
 table, td, th{
-    border: 1px solid black;
+    border: 1px solid;
+    border-color: white;
+    
 }
 
 table{
-    margin: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: gray;
+
+}
+button{
+    margin: 10px;
+}
+
+legend{
+    margin-bottom:25px ;
+}
+
+label{
+    margin-right: 25px;
 }
 
 td, th{
@@ -16,4 +47,10 @@ font-weight: bold;
 
 tfoot{
     background-color: rgba(112, 159, 165, .1)
+}
+body{
+  background-color: slateblue;  
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  color: violet;
 }
