@@ -64,7 +64,6 @@ Location.prototype.calcHourlySales = function () {
         this.cookiesSoldEachHourArray.push(cookiesSoldThisHour);
         this.dailyTotal += cookiesSoldThisHour;
     }
-    
 }
  //Create table header
 function createTableHeader(){
