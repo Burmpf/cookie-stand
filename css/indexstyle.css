@@ -1,7 +1,6 @@
 header{
-    height: 50px;
-    width: auto;
-    background-color: blue;
+    height: 75px;
+    background-color: rgb(21, 151, 151);
     text-align: center;
 }
 
@@ -10,8 +9,34 @@ header a{
     text-decoration: none;
 }
 
+header h1{
+    padding-left: 25%;
+    padding-right: 25%;
+}
+header a{
+    padding-left: 25%;
+    padding-right: 33%;
+}
+
+header img{
+    float: left;
+    width: 200px;
+}
 main{
     background-color: slategrey;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color:lightcoral;
+    text-align: center;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+main ul{
+    margin-top: 50px;
+}
+#frosted{
+    margin-top: 25px;
+    margin-bottom: 30px;
 }
 
 h1{
@@ -28,9 +53,11 @@ sup{
 }
 
 footer{
-    background-color: red;
+    background-color: rgb(21, 151, 151);
     display: flex;
     height: 100px;
+    justify-content: space-between;
+    align-items: center;
   
 }
 
@@ -38,3 +65,20 @@ footer img{
     width: 100px;
     height: 50px;
 }
+h1, h2, h3{
+    font-family: 'Roboto', sans-serif;
+    color: aqua;
+}
+
+#products{
+    margin-top: 100px;
+}
+
+#products ul{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    padding-bottom: 40px;
+    
+}
+

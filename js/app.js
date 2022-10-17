@@ -54,6 +54,7 @@ function Location(name, min, max, avg) {
 // RANDOM NUMBER GENERATION
 Location.prototype.getRandomCustomers = function () {
     return Math.floor(Math.random() * (this.max - this.min + 1) + this.min); // The maximum is inclusive and the minimum is inclusive
+   
 }
 // CREATE THE TOTAL SOLD IN AN HOUR ( random number * avg sold per hour)
 Location.prototype.calcHourlySales = function () {
@@ -91,20 +92,13 @@ Location.prototype.renderTable = function() {
         td.textContent = this.cookiesSoldEachHourArray[i];
         tr.appendChild(td);
     }
-    
+
     // let dayTotal = document.createElement('td');
     // headerRow.appendChild(dayTotal);
     // dayTotal.textContent = this.dailyTotal;
 }
 
 
-// attempt at making totals
-
-Location.prototype.createLocalTotals = function() {
-let totalsCol = document.createElement('td');
-locationTable.appendChild(totalsCol);
-totalsCol.textContent = ''
-}
 
 
 
@@ -121,11 +115,6 @@ paris.renderTable();
 let lima = new Location('Lima', 2, 16, 4.6);
 lima.renderTable();
 
-// function createTableFooter(){
-//     let footerRow = document.createElement('tr');
-//     let tableFooter = document.createElement('td');
-
-// }
 
 
 let form = document.querySelector('form');
